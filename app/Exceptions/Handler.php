@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
                 return $this->createResponseBadRequest($exception->getMessage(), $exception->errors(), $exception->getCode() ?: 500);
             }
 
-            $this->createResponseInternalError($exception);
+            return $this->createResponseInternalError($exception);
         }
 
         return parent::render($request, $exception);
