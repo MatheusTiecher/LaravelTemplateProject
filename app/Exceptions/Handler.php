@@ -2,11 +2,10 @@
 
 namespace App\Exceptions;
 
-use App\Traits\Api\ResponseCreator;
+use App\Traits\ResponseCreator;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits\Api;
+namespace App\Traits;
 
 trait ResponseCreator
 {
