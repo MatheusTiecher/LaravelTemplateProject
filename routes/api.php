@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UnitController;
+use App\Http\Controllers\Api\Admin\UnitController as AdminUnitController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +29,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/units', [UnitController::class, 'index']);
+
+// admin routes - auth:sanctum middleware
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () {
+    Route::apiResource('units', AdminUnitController::class);
+    // Route::apiResource('users', UserController::class);
+});

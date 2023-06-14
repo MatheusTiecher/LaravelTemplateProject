@@ -11,7 +11,7 @@ class StoreUnitRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class StoreUnitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'description' => 'required|string|max:255',
+            'fantasy_name' => 'nullable|string|max:255',
+            'social_name' => 'required|string|max:255',
+            'cnpj' => 'required|string|max:14|unique:units,cnpj',
+            'email' => 'required|string|max:255|unique:units,email',
+            'phone' => 'nullable|string|max:255',
+            'cellphone' => 'required|string|max:255',
+            'facebook' => 'nullable|string|max:255',
+            'twitter' => 'nullable|string|max:255',
+            'instagram' => 'nullable|string|max:255',
+            'youtube' => 'nullable|string|max:255',
         ];
     }
 }

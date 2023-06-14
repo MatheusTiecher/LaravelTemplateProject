@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
+            $table->string('description');
+            $table->string('fantasy_name')->nullable();
+            $table->string('social_name')->nullable();
+            $table->string('cnpj')->unique()->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('phone')->nullable();
+            $table->string('cellphone')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('youtube')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
