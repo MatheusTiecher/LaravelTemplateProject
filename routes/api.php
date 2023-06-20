@@ -23,15 +23,14 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-// routes that need authentication
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/units', [UnitController::class, 'index']);
+
+// routes that need authentication
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/user', [AuthController::class, 'user']);
+});
 
 // admin routes - auth:sanctum middleware
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum'], function () {
     Route::apiResource('units', AdminUnitController::class);
-    // Route::apiResource('users', UserController::class);
 });

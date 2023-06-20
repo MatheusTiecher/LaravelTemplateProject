@@ -42,4 +42,9 @@ class AuthController extends Controller
 
         return $this->createResponseSuccess([], 200, 'Logout realizado com sucesso.');
     }
+
+    public function user(Request $request)
+    {
+        return $this->createResponseSuccess($request->user(), 200, 'Usuário logado.');
+    }
 }
